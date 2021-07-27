@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import {Container, Row, Col} from './components/layout/Base'
+import React, {useState} from "react"
+import TaskForm from "./components/TaskForm"
+import Tasks from "./components/Tasks"
 
 function App() {
+  const [tasks, setTasks] = useState([]);
+
+  const addTask = (task)=>{
+    setTasks([...tasks, task])
+  };
+
+  const deleteTask = (id) => {
+    const finalTasks = tasks.filter((task)=> task.id !== id)
+    setTasks(finalTasks);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Row className="mt-4" justify="space-between">
+        <Col size={6}>Formulario
+          <TaskForm addTask={addTask}/>
+        </Col>
+        <Col size={6}>
+          <Tasks tasks={tasks} deleteTask={deleteTask}/>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

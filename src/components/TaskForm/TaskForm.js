@@ -1,0 +1,34 @@
+import React, {Form, Button} from "react-bootstrap"
+import PropTypes from "prop-types"
+import shortId from "short-id"
+
+const TaskForm = ({addTask}) => {
+    const handleAddTask = (e)=>{
+        e.preventDefault()
+        const [taskName, taskDescription]= e.target.elements
+        addTask({
+            id: shortId.generate(),
+            name : taskName.value.trim(),
+            description: taskDescription.value.trim()
+        })
+    }
+    return (
+        <Form onSubmit={handleAddTask}>
+        <Form.Group>
+            <Form.Label>Nombre de la tarea</Form.Label>
+            <Form.Control type="text" name="taskName" placeholder="nombre tarea"/>
+        </Form.Group>
+        <Form.Group>
+            <Form.Label>Descripcion de la tarea</Form.Label>
+            <Form.Control as="textarea" name="taskDescription" placeholder="descripcion de la tarea" rows={3}/>
+        </Form.Group>
+        <Button type="submit">Guardar tarea</Button>
+        </Form>
+    )
+}
+
+TaskForm.propTypes = {
+    addTask: PropTypes.func.isRequired
+}
+ 
+export default TaskForm;
