@@ -18,4 +18,5 @@ Row.propTypes={
     justify : PropTypes.oneOf(justifyValues),
     mt: numberType,
     mb: numberType,
+    lg: numberType,
 }

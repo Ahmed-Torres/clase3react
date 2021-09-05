@@ -19,9 +19,9 @@ const Tasks = ({ tasks, deleteTask }) => {
       <tbody>
         {tasks.map((task)=>(
           <tr key={task.id}>
-            <td>${task.id}</td>
-            <td>${task.name}</td>
-            <td>${task.description}</td>
+            <td>{task.id}</td>
+            <td>{task.name}</td>
+            <td>{task.description}</td>
             <td className="equis" onClick={()=> removeTask(task.id)}>X</td>
           </tr>
         ))}

@@ -2,6 +2,10 @@ import {Container, Row, Col} from './components/layout/Base'
 import React, {useState} from "react"
 import TaskForm from "./components/TaskForm"
 import Tasks from "./components/Tasks"
+import MouseMove from "./MouseMove";
+import Effect from "./Effect";
+import APICall from "./APICall";
+
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -17,14 +21,20 @@ function App() {
 
   return (
     <Container>
-      <Row className="mt-4" justify="space-between">
-        <Col size={6}>Formulario
+      <Row className="mt-5" lg={5} justify="space-around" >
+        <Col size={6} height={100}>Formulario
           <TaskForm addTask={addTask}/>
         </Col>
+        
         <Col size={6}>
           <Tasks tasks={tasks} deleteTask={deleteTask}/>
         </Col>
       </Row>
+
+      <MouseMove />
+      <Effect />
+      <APICall />
+
     </Container>
   );
 }

@@ -1,28 +1,38 @@
-import React, {Form, Button} from "react-bootstrap"
+import React, {Form, Button } from "react-bootstrap"
 import PropTypes from "prop-types"
 import shortId from "short-id"
+
+
 
 const TaskForm = ({addTask}) => {
     const handleAddTask = (e)=>{
         e.preventDefault()
+        console.log(e.target.elements)
         const [taskName, taskDescription]= e.target.elements
-        addTask({
-            id: shortId.generate(),
-            name : taskName.value.trim(),
-            description: taskDescription.value.trim()
-        })
+
+        if ((taskName.value.trim() && taskDescription.value.trim()) != 0) {
+            addTask({
+                id: shortId.generate(),
+                name : taskName.value.trim(),
+                description: taskDescription.value.trim()
+            })
+            e.target.reset();
+        }
+
     }
     return (
-        <Form onSubmit={handleAddTask}>
-        <Form.Group>
-            <Form.Label>Nombre de la tarea</Form.Label>
-            <Form.Control type="text" name="taskName" placeholder="nombre tarea"/>
-        </Form.Group>
-        <Form.Group>
-            <Form.Label>Descripcion de la tarea</Form.Label>
-            <Form.Control as="textarea" name="taskDescription" placeholder="descripcion de la tarea" rows={3}/>
-        </Form.Group>
-        <Button type="submit">Guardar tarea</Button>
+        <Form onSubmit={handleAddTask} sm={2}>
+            <Form.Group>
+                <Form.Label>Nombre de la tarea</Form.Label>
+                <Form.Control type="text" name="taskName" placeholder="nombre tarea"/>
+            </Form.Group>
+
+            <Form.Group>
+                <Form.Label>Descripcion de la tarea</Form.Label>
+                <Form.Control as="textarea" name="taskDescription" 
+                    placeholder="descripcion de la tarea" rows={3}/>
+            </Form.Group>
+            <Button type="submit">Guardar tarea</Button>
         </Form>
     )
 }
