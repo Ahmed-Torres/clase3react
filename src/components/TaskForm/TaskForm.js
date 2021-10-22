@@ -23,15 +23,16 @@ const TaskForm = ({addTask}) => {
     return (
         <Form onSubmit={handleAddTask} sm={2}>
             <Form.Group>
-                <Form.Label>Nombre de la tarea</Form.Label>
-                <Form.Control type="text" name="taskName" placeholder="nombre tarea"/>
+                <Form.Label>Nombre y Apellido</Form.Label>
+                <Form.Control type="text" name="taskName" placeholder="nombre y apellido"/>
             </Form.Group>
 
             <Form.Group>
-                <Form.Label>Descripcion de la tarea</Form.Label>
-                <Form.Control as="textarea" name="taskDescription" 
-                    placeholder="descripcion de la tarea" rows={3}/>
+                <Form.Label>Numero de documento</Form.Label>
+                <Form.Control as="textarea" type="number" name="taskDescription" 
+                    placeholder="numero de documento" rows={3}/>
             </Form.Group>
+            
             <Button type="submit">Guardar tarea</Button>
         </Form>
     )

@@ -2,6 +2,10 @@ import { Table } from "react-bootstrap"
 import PropTypes from "prop-types";
 import React from "react"
 import "../../App.css"
+
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faTrashAlt} from '@fortawesome/free-solid-svg-icons'
+
 const Tasks = ({ tasks, deleteTask }) => {
 
   const removeTask = (id) => {
@@ -14,6 +18,7 @@ const Tasks = ({ tasks, deleteTask }) => {
           <th>#</th>
           <th>Tarea</th>
           <th>Descripcion</th>
+          <th><FontAwesomeIcon icon = {faTrashAlt} /></th>
         </tr>
       </thead>
       <tbody>

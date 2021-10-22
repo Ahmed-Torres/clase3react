@@ -5,7 +5,7 @@ import Tasks from "./components/Tasks"
 import MouseMove from "./MouseMove";
 import Effect from "./Effect";
 import APICall from "./APICall";
-
+import Footer from './components/Footer/Footer'
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -30,7 +30,7 @@ function App() {
           <Tasks tasks={tasks} deleteTask={deleteTask}/>
         </Col>
       </Row>
-
+      <Footer />
       <MouseMove />
       <Effect />
       <APICall />
